@@ -1,13 +1,12 @@
 ---
-- name: Configure global settings.
-  lineinfile:
-    dest: "{{ postgresql_config_path }}/postgresql.conf"
-    regexp: "^#?{{ item.option }}.+$"
-    line: "{{ item.option }} = '{{ item.value }}'"
-    state: "{{ item.state | default('present') }}"
-    mode: 0644
-  with_items: "{{ postgresql_global_config_options }}"
-  notify: restart postgresql
+- name: PostgreSQL | Update configuration (postgresql.conf)
+  template:
+    src: "postgresql.conf-{{ postgresql_version }}.j2"
+    # if using pgtune, save the template to ".untuned"
+    dest: "{{postgresql_config_path}}/postgresql.conf"
+    owner: "{{ postgresql_user }}"
+    group: "{{ postgresql_group }}"
+    mode: 0600
 
 - name: Configure host based authentication (if entries are configured).
   template:
