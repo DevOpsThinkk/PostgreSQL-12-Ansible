@@ -26,8 +26,8 @@ postgresql_hba_entries:
   - {type: host, database: all, user: all, address: '::1/128', auth_method: md5}
 
 # Debian only. Used to generate the locales used by PostgreSQL databases.
-#postgresql_locales:
-#  - 'en_US.UTF-8'
+postgresql_locales:
+  - 'en_US.UTF-8'
 
 # Databases to ensure exist.
 postgresql_databases: []
