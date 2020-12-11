@@ -26,7 +26,7 @@ postgresql_hba_entries:
   - {type: host, database: all, user: all, address: '::1/128', auth_method: md5}
 
 # Debian only. Used to generate the locales used by PostgreSQL databases.
-postgresql_locales:
+postgresql_locale:
   - 'en_US.UTF-8'
 
 # Databases to ensure exist.
@@ -646,18 +646,18 @@ postgresql_jit_provider: "llvmjit"
 # LOCK MANAGEMENT
 #------------------------------------------------------------------------------
 
-postgresql_deadlock_timeout: 1s
-postgresql_max_locks_per_transaction: 64         # min 10
+#postgresql_deadlock_timeout: 1s
+#postgresql_max_locks_per_transaction: 64         # min 10
 
 # Note:  Each lock table slot uses ~270 bytes of shared memory, and there are
 # max_locks_per_transaction * (max_connections + max_prepared_transactions)
 # lock table slots.
-postgresql_max_pred_locks_per_transaction: 64    # min 10
+#postgresql_max_pred_locks_per_transaction: 64    # min 10
 
-postgresql_max_pred_locks_per_relation: -2       # (>= 10) negative values mean
+#postgresql_max_pred_locks_per_relation: -2       # (>= 10) negative values mean
                # (max_pred_locks_per_transaction
                #  / -max_pred_locks_per_relation) - 1
-postgresql_max_pred_locks_per_page: 2            # (>= 10) min 0
+#postgresql_max_pred_locks_per_page: 2            # (>= 10) min 0
 
 
 #------------------------------------------------------------------------------
@@ -666,16 +666,16 @@ postgresql_max_pred_locks_per_page: 2            # (>= 10) min 0
 
 # - Previous PostgreSQL Versions -
 
-postgresql_array_nulls:                 on
-postgresql_backslash_quote:             "safe_encoding" # on, off, or safe_encoding
-postgresql_default_with_oids:           off
-postgresql_escape_string_warning:       on
-postgresql_lo_compat_privileges:        off
-postgresql_operator_precedence_warning: off
-postgresql_quote_all_identifiers:       off
-postgresql_sql_inheritance:             on
-postgresql_standard_conforming_strings: on
-postgresql_synchronize_seqscans:        on
+#postgresql_array_nulls:                 on
+#postgresql_backslash_quote:             "safe_encoding" # on, off, or safe_encoding
+#postgresql_default_with_oids:           off
+#postgresql_escape_string_warning:       on
+#postgresql_lo_compat_privileges:        off
+#postgresql_operator_precedence_warning: off
+#postgresql_quote_all_identifiers:       off
+#postgresql_sql_inheritance:             on
+#postgresql_standard_conforming_strings: on
+#postgresql_synchronize_seqscans:        on
 
 
 # - Other Platforms and Clients -
@@ -712,40 +712,10 @@ postgresql_include:            false
 # PGTUNE
 #------------------------------------------------------------------------------
 # Should we run pgtune and accept the changes it proposes?
-postgresql_pgtune: no
+#postgresql_pgtune: no
 # Total system memory in bytes, will attempt to detect if set to "no"
-postgresql_pgtune_memory: no
+#postgresql_pgtune_memory: no
 # Database type, valid options are DW, OLTP, Web, Mixed, Desktop
-postgresql_pgtune_type: "Mixed"
+#postgresql_pgtune_type: "Mixed"
 # Maximum number of expected connections, if "no", default based on db type
-postgresql_pgtune_connections: no
-
-#------------------------------------------------------------------------------
-# INSTALL/REPO
-#------------------------------------------------------------------------------
-
-# Install repo, or rely on existing configuration (Satellite, Artifactory, etc.)
-postgresql_install_repository: true
-
-# APT settings
-postgresql_apt_key_id: "ACCC4CF8"
-postgresql_apt_key_url: "https://www.postgresql.org/media/keys/ACCC4CF8.asc"
-postgresql_apt_repository: "deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main {{ postgresql_version }}"
-# Pin-Priority of PGDG repository
-postgresql_apt_pin_priority: 500
-
-# YUM repository locations
-postgresql_yum_repository_url: "http://yum.postgresql.org"
-postgresql_pgdg_repository_url: "https://download.postgresql.org/pub/repos/yum/"
-
-# YUM (RedHat, CentOS, etc.) baseurl/gpgkey
-postgresql_yum_repository_baseurl: "{{ postgresql_yum_repository_url }}/{{ postgresql_version }}/{{ ansible_os_family | lower }}/rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}"
-postgresql_yum_repository_gpgkey: "{{ postgresql_pgdg_repository_url }}/RPM-GPG-KEY-PGDG-{{ postgresql_version_terse }}"
-
-# DNF (Fedora) baseurl/gpgkey
-postgresql_dnf_repository_baseurl: "{{ postgresql_yum_repository_url }}/{{ postgresql_version }}/fedora/fedora-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}"
-postgresql_dnf_repository_gpgkey: "{{ postgresql_yum_repository_gpgkey }}"
-
-postgresql_apt_py3_dependencies: ["python3-psycopg2", "locales"]
-postgresql_apt_py2_dependencies: ["python-psycopg2", "python-pycurl", "locales"]
-postgresql_apt_dependencies: "{{ postgresql_apt_py3_dependencies if 'python3' in ansible_python_interpreter|default('') else postgresql_apt_py2_dependencies }}"
+#postgresql_pgtune_connections: no
