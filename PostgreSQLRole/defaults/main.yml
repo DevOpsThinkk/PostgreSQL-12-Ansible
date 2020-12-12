@@ -1,7 +1,7 @@
 ---
 # RHEL/CentOS only. Set a repository to use for PostgreSQL installation.
 postgresql_enablerepo: ""
-
+postgresql_cluster_name: "DB2"
 # Set postgresql state when configuration changes are made. Recommended values:
 # `restarted` or `reloaded`
 postgresql_restarted_state: "restarted"
@@ -12,7 +12,6 @@ postgresql_group: postgres
 
 postgresql_service_state: started
 postgresql_service_enabled: true
-
 
 # Host based authentication (hba) entries to be added to the pg_hba.conf. This
 # variable's defaults reflect the defaults that come with a fresh installation.
@@ -78,6 +77,7 @@ postgresql_unix_socket_directories:     # (>= 9.3)
   - "{{ postgresql_pid_directory }}"
 postgresql_unix_socket_group: ""
 postgresql_unix_socket_permissions: "0777" # begin with 0 to use octal notation
+postgresql_directories_mode: '0755'
 
 postgresql_bonjour: off      # advertise server via Bonjour
 postgresql_bonjour_name: ""  # defaults to the computer name

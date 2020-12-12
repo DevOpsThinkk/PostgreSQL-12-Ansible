@@ -7,6 +7,7 @@
   when: ansible_os_family == 'RedHat'
 
 - include_tasks: initialize.yml
+- include_tasks: directory_creation.yml
 - include_tasks: configure.yml
 
 - name: Ensure PostgreSQL is started and enabled on boot.
