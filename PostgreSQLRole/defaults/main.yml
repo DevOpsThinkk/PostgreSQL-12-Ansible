@@ -37,10 +37,10 @@ postgres_users_no_log: true
 
 # pg_ident.conf
 postgresql_pg_ident:
-  - comment: "root is allowed to login as {{ postgresql_admin_user }}"
-    mapname: "root_as_{{ postgresql_admin_user }}"
-    system_username: "{{ postgresql_admin_user }}"
-    pg_username: "{{ postgresql_admin_user }}"
+  - comment: "root is allowed to login as {{ postgresql_user }}"
+    mapname: "root_as_{{ postgresql_user }}"
+    system_username: "{{ postgresql_user }}"
+    pg_username: "{{ postgresql_user }}"
 
 # postgresql.conf
 
