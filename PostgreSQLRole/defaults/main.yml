@@ -404,7 +404,7 @@ postgresql_plan_cache_mode:            "auto"       # (>= 12)
 
 # Valid values are combinations of stderr, csvlog, syslog, and eventlog.
 # depending on platform. Csvlog requires logging_collector to be on.
-postgresql_log_destination:            "stderr"
+postgresql_log_destination: "stderr"
 
 # Enable capturing of stderr and csvlog into log files.
 # Required to be on for csvlogs.
