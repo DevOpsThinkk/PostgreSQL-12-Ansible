@@ -28,7 +28,7 @@
     mode: 0640
   register: pg_ident_conf
 
-- name: PostgreSQL | Use the conf directory when starting the Postgres service | RedHat
+- name: Use the conf directory when starting the Postgres service | RedHat
   template:
     src: service.d_custom.conf.j2
     dest: "/etc/systemd/system/postgresql-{{ postgresql_version }}.service.d/custom.conf"
@@ -36,9 +36,9 @@
   register: custom_conf
   notify: restart postgresql
 
-- name: PostgreSQL | Reload all conf files
+- name: Reload all conf files
   service:
-    name: "{{ postgresql_user }}"
+    name: "{{ postgresql_daemon }}"
     state: reloaded
   when: postgresql_conf.changed or pg_hba_conf.changed or pg_ident_conf.changed 
 
