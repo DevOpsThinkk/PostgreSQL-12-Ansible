@@ -37,6 +37,22 @@ postgresql_users: []
 
 # Whether to output user data when managing users.
 postgres_users_no_log: true
+#------------------------------------------------------------------------------
+# FILE LOCATIONS
+#------------------------------------------------------------------------------
+
+# Location of postgres configuration files here
+postgresql_config_path: "/etc/postgresql/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
+# HBA (Host Based Authentication) file
+postgresql_hba_file: "{{ postgresql_config_path }}/pg_hba.conf"
+# Ident configuration file
+postgresql_ident_file: "{{ postgresql_config_path }}/pg_ident.conf"
+# Use data in another directory
+postgresql_varlib_directory_name: "postgresql"
+postgresql_wal_directory: ""
+postgresql_pid_directory: "/var/run/postgresql"
+# If external_pid_file is not explicitly set, on extra PID file is written
+postgresql_external_pid_file: "{{ postgresql_pid_directory }}/{{ postgresql_version }}-{{ postgresql_cluster_name }}.pid"
 
 #------------------------------------------------------------------------------
 # CONNECTIONS AND AUTHENTICATION
