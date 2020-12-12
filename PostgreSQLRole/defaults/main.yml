@@ -10,9 +10,6 @@ postgresql_python_library: python-psycopg
 postgresql_user: postgres
 postgresql_group: postgres
 
-postgresql_unix_socket_directories:
-  - /var/run/postgresql
-
 postgresql_service_state: started
 postgresql_service_enabled: true
 
@@ -37,6 +34,17 @@ postgresql_users: []
 
 # Whether to output user data when managing users.
 postgres_users_no_log: true
+
+
+# pg_ident.conf
+postgresql_pg_ident:
+  - comment: "root is allowed to login as {{ postgresql_admin_user }}"
+    mapname: "root_as_{{ postgresql_admin_user }}"
+    system_username: "{{ postgresql_admin_user }}"
+    pg_username: "{{ postgresql_admin_user }}"
+
+# postgresql.conf
+
 #------------------------------------------------------------------------------
 # FILE LOCATIONS
 #------------------------------------------------------------------------------
