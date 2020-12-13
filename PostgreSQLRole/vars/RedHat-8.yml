@@ -6,7 +6,7 @@ postgresql_home_dir: "/var/lib/pgsql"
 postgresql_data_dir: "/var/lib/pgsql/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
 postgresql_config_path: "/var/lib/pgsql/{{ postgresql_version }}/{{ postgresql_cluster_name }}"
 postgresql_bin_path: "/usr/pgsql-12/bin"
-postgresql_log_dir: "{{ postgresql_data_dir }}/log/"
+#postgresql_log_dir: "{{ postgresql_data_dir }}/log/"
 postgresql_daemon: "postgresql-12"
 postgresql_packages:
   - postgresql12-libs-12.5-1PGDG.rhel8.x86_64.rpm
