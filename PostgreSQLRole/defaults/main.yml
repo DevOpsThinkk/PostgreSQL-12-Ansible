@@ -72,7 +72,6 @@ postgresql_port: 5432
 postgresql_max_connections: 100
 postgresql_superuser_reserved_connections: 3
 
-postgresql_pid_directory: "/var/run/postgresql"
 postgresql_unix_socket_directories:     # (>= 9.3)
   - "{{ postgresql_pid_directory }}"
 postgresql_unix_socket_group: ""
