@@ -6,7 +6,7 @@
     mode: 0644
   notify: restart postgresql
 
-- name: PostgreSQL | Drop the data directory | RedHat
+- name: Drop the data directory | RedHat
   file:
     path: "{{ postgresql_data_dir }}"
     state: absent
