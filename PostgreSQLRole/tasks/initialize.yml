@@ -6,12 +6,12 @@
     mode: 0644
   notify: restart postgresql
 
-- name: Drop the data directory | RedHat
-  file:
-    path: "{{ postgresql_data_dir }}"
-    state: absent
-  register: pgdata_dir_remove
-  when: ansible_os_family == "RedHat"
+#- name: Drop the data directory | RedHat
+#  file:
+#    path: "{{ postgresql_data_dir }}"
+#    state: absent
+#  register: pgdata_dir_remove
+#  when: ansible_os_family == "RedHat"
 
 - name: Ensure PostgreSQL data directory exists.
   file:
@@ -32,8 +32,5 @@
   when: not pgdata_dir_version.stat.exists
   become: yes
   become_user: "{{ postgresql_user }}"
- 
   vars:
     ansible_ssh_pipelining: true
-
-
