@@ -21,9 +21,9 @@ Change hosts: in playbook.yml according to your host groups
 ```
 Start ansible-playbook with playbook.yml and add -i if you want to use inventory file.
 
-    ```
-    ansible-playbook playbook.yml -vv
-    ```
+```
+ansible-playbook playbook.yml -vv
+```
 
 
 Author Information
