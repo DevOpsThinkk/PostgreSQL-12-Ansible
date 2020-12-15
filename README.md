@@ -1,4 +1,4 @@
-# Install PostgreSQL-12 on Centos 8
+# Install PostgreSQL-12 on Centos 8 using Ansible Role
 
 ## Features:
 
